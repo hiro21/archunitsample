@@ -10,7 +10,7 @@ class ArchTest {
         @Test
         fun `api配下はControllerである`() {
             val importedClasses = ClassFileImporter().importPackages("com.hiswing.archunitsample")
-            println(importedClasses)
+            println("testPrint:$importedClasses")
         }
     }
 }
