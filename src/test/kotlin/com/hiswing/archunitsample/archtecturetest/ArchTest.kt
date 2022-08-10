@@ -1,4 +1,4 @@
-package com.hiswing.archunitsample
+package com.hiswing.archunitsample.archtecturetest
 
 import com.tngtech.archunit.core.importer.ClassFileImporter
 import com.tngtech.archunit.core.importer.ImportOption
