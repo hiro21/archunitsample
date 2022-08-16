@@ -22,7 +22,7 @@ internal class DependentParent {
             val result = extractParent(dependentClass)
             println(result)
         }
-        fun extractParent(javaClass: List<JavaClass>): List<JavaClass> {
+        private fun extractParent(javaClass: List<JavaClass>): List<JavaClass> {
             // まずはその子を抽出
             val parent: List<JavaClass> = javaClass.map {
                 it.directDependenciesToSelf.map {
