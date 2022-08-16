@@ -19,21 +19,22 @@ internal class DependentParent {
             val dependentClass: List<JavaClass> = childClass.directDependenciesToSelf.map {
                 it.originClass
             }.distinct()
-            // println(dependentClass)
-
-            val result: List<JavaClass> = dependentClass.map {
-                it.directDependenciesToSelf.map {
-                    it.originClass
-                }
-            }.flatten().distinct()
+            val result = extractParent(dependentClass)
             println(result)
-
-            val result2: List<JavaClass> = result.map {
+        }
+        fun extractParent(javaClass: List<JavaClass>): List<JavaClass> {
+            // まずはその子を抽出
+            val parent: List<JavaClass> = javaClass.map {
                 it.directDependenciesToSelf.map {
                     it.originClass
                 }
             }.flatten().distinct()
-            println(result2)
+            val parentSize = parent.filter { it.directDependenciesToSelf.size > 0 }.size
+            if (parentSize == 0) {
+                return parent
+            } else {
+                return extractParent(parent)
+            }
         }
     }
 }
