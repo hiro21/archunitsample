@@ -16,10 +16,7 @@ internal class DependentParent {
                 .withImportOption(ImportOption.DoNotIncludeTests())
                 .importPackages("com.hiswing.archunitsample")
             val childClass = classes.get(PrintTimeJapan::class.java)
-            val dependentClass: List<JavaClass> = childClass.directDependenciesToSelf.map {
-                it.originClass
-            }.distinct()
-            val result = extractParent(dependentClass)
+            val result: List<JavaClass> = extractParent(listOf(childClass))
             println(result)
         }
         private fun extractParent(javaClass: List<JavaClass>): List<JavaClass> {
