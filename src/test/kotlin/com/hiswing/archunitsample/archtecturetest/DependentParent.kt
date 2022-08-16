@@ -22,15 +22,15 @@ internal class DependentParent {
         private fun extractParent(javaClass: List<JavaClass>): List<JavaClass> {
             // まずはその子を抽出
             val parent: List<JavaClass> = javaClass.map {
-                it.directDependenciesToSelf.map {
-                    it.originClass
+                it.directDependenciesToSelf.map { dependentClass ->
+                    dependentClass.originClass
                 }
             }.flatten().distinct()
             val parentSize = parent.filter { it.directDependenciesToSelf.size > 0 }.size
-            if (parentSize == 0) {
-                return parent
+            return if (parentSize == 0) {
+                parent
             } else {
-                return extractParent(parent)
+                extractParent(parent)
             }
         }
     }
