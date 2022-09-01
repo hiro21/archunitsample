@@ -5,8 +5,10 @@ import com.tngtech.archunit.core.domain.JavaClass
 import com.tngtech.archunit.core.importer.ClassFileImporter
 import com.tngtech.archunit.core.importer.ImportOption
 import org.junit.jupiter.api.Nested
+import org.junit.jupiter.api.Tag
 import org.junit.jupiter.api.Test
 
+@Tag("dependencyConfirm")
 internal class DependentParent {
     @Nested
     inner class `依存している親を確認する` {

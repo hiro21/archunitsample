@@ -34,3 +34,10 @@ tasks.withType<KotlinCompile> {
 tasks.withType<Test> {
 	useJUnitPlatform()
 }
+
+tasks.register<Test>("dependTest") {
+    println("add test")
+    useJUnitPlatform {
+        includeTags("dependencyConfirm")
+    }
+}
